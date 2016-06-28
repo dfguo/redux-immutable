@@ -17,7 +17,7 @@ export default (reducers: Object, RecordClass: ?Immutable.Record): Function => {
           inputState = Immutable.Map();
         }
 
-        if (RecordClass && !(inpuState instanceof RecordClass)) {
+        if (RecordClass && !(inputState instanceof RecordClass)) {
             inputState = new RecordClass(inputState)
         }
 
