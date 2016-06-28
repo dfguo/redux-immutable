@@ -7,7 +7,7 @@ import {
 
 import Immutable from 'immutable';
 
-export default (reducers: Object): Function => {
+export default (reducers: Object, RecordClass: ?Immutable.Record): Function => {
     let reducerKeys;
 
     reducerKeys = Object.keys(reducers);
@@ -15,6 +15,10 @@ export default (reducers: Object): Function => {
     return (inputState: ?Immutable, action: Object): Immutable => {
         if (inputState === undefined) {
           inputState = Immutable.Map();
+        }
+
+        if (RecordClass && !(inpuState instanceof RecordClass)) {
+            inputState = new RecordClass(inputState)
         }
 
         /* eslint-disable no-process-env */
